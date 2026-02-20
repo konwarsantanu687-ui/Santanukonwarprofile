@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Santanu Konwar</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:#0a0a0a;
+  color:#f5f5f5;
+  line-height:1.6;
+}
+
+.container{
+  width:90%;
+  max-width:1100px;
+  margin:auto;
+}
+
+/* HERO */
+.hero{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  animation:fadeUp 1s ease forwards;
+}
+
+.hero h1{
+  font-size:64px;
+  font-weight:700;
+  letter-spacing:-1px;
+}
+
+.hero span{
+  color:#7c5cff;
+}
+
+.hero p{
+  margin-top:20px;
+  font-size:20px;
+  color:#aaa;
+}
+
+.social{
+  margin-top:30px;
+}
+
+.social a{
+  text-decoration:none;
+  color:#888;
+  margin-right:25px;
+  font-size:16px;
+  transition:all 0.3s ease;
+}
+
+.social a:hover{
+  color:#7c5cff;
+}
+
+/* SECTION */
+.section{
+  padding:120px 0;
+  border-top:1px solid #1a1a1a;
+  opacity:0;
+  transform:translateY(40px);
+  transition:all 1s ease;
+}
+
+.section.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.section h2{
+  font-size:32px;
+  margin-bottom:50px;
+  font-weight:600;
+}
+
+/* SKILLS */
+.skills{
+  display:flex;
+  gap:40px;
+  flex-wrap:wrap;
+}
+
+.card{
+  width:260px;
+  height:220px;
+  perspective:1200px;
+  cursor:pointer;
+}
+
+.card-inner{
+  width:100%;
+  height:100%;
+  transition:transform 0.8s cubic-bezier(.4,.2,.2,1);
+  transform-style:preserve-3d;
+  position:relative;
+}
+
+.card.flipped .card-inner{
+  transform:rotateY(180deg);
+}
+
+.card-front,
+.card-back{
+  position:absolute;
+  width:100%;
+  height:100%;
+  border-radius:16px;
+  background:#121212;
+  border:1px solid #1f1f1f;
+  padding:30px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  backface-visibility:hidden;
+}
+
+.card-front{
+  font-size:18px;
+  font-weight:500;
+}
+
+.card-back{
+  transform:rotateY(180deg);
+  font-size:14px;
+  color:#bbb;
+  background:#151515;
+}
+
+/* HOVER EFFECT */
+.card:hover .card-front{
+  border-color:#7c5cff;
+}
+
+/* FOOTER */
+footer{
+  padding:60px 0;
+  border-top:1px solid #1a1a1a;
+  text-align:center;
+  color:#666;
+  font-size:14px;
+}
+
+/* ANIMATION */
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(40px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .hero h1{
+    font-size:38px;
+  }
+
+  .skills{
+    gap:20px;
+  }
+
+  .card{
+    width:100%;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<section class="hero">
+  <h1>Hi, I’m <span>Santanu Konwar</span>.</h1>
+  <p>I design and build modern, minimal web experiences.</p>
+
+  <div class="social">
+    <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+    <a href="https://instagram.com" target="_blank">Instagram</a>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Skills</h2>
+
+  <div class="skills">
+
+    <div class="card" onclick="flipCard(this)">
+      <div class="card-inner">
+        <div class="card-front">Web Design</div>
+        <div class="card-back">
+          Creating responsive, modern and visually clean websites
+          using HTML, CSS and JavaScript.
+        </div>
+      </div>
+    </div>
+
+    <div class="card" onclick="flipCard(this)">
+      <div class="card-inner">
+        <div class="card-front">Digital Marketing</div>
+        <div class="card-back">
+          Helping brands grow through SEO, content strategy,
+          and social media marketing.
+        </div>
+      </div>
+    </div>
+
+    <div class="card" onclick="flipCard(this)">
+      <div class="card-inner">
+        <div class="card-front">Blogging</div>
+        <div class="card-back">
+          Writing educational and technical blogs
+          focused on coding and online growth.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  © 2026 Santanu Konwar. All rights reserved.
+</footer>
+
+</div>
+
+<script>
+function flipCard(card){
+  card.classList.toggle("flipped");
+}
+
+// Scroll reveal
+const sections = document.querySelectorAll(".section");
+window.addEventListener("scroll", () => {
+  sections.forEach(sec => {
+    const top = sec.getBoundingClientRect().top;
+    if(top < window.innerHeight - 100){
+      sec.classList.add("visible");
+    }
+  });
+});
+</script>
+
+</body>
+</html>
